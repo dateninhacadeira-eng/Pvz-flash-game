@@ -5,33 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Plants vs Zombies - Flash Game</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             background-color: #000;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: flex; justify-content: center; align-items: center;
         }
         #game-container {
-            width: 100vw;
-            height: 100vh;
-            max-width: 800px;
-            max-height: 600px;
+            width: 100vw; height: 100vh;
+            max-width: 800px; max-height: 600px;
             aspect-ratio: 4 / 3;
         }
-        ruffle-player {
-            width: 100%;
-            height: 100%;
-        }
+        ruffle-player { width: 100%; height: 100%; }
     </style>
-    <!-- Carrega o emulador estável da nuvem, resolvendo os travamentos do GitHub Pages -->
+    <!-- Emulador via nuvem para evitar erros de permissão do GitHub -->
     <script src="https://unpkg.com"></script>
 </head>
 <body>
@@ -40,19 +28,12 @@
 
     <script>
         window.RufflePlayer = window.RufflePlayer || {};
-        window.RufflePlayer.config = {
-            "autoplay": "on",
-            "splashScreen": false,
-            "unmuteOverlay": "hidden"
-        };
-
         window.addEventListener("DOMContentLoaded", () => {
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
-            const container = document.getElementById("game-container");
-            container.appendChild(player);
+            document.getElementById("game-container").appendChild(player);
             
-            // Inicializa o arquivo do jogo diretamente
+            // CORRIGIDO: Nome idêntico ao do seu arquivo no repositório
             player.load("plants-vs-zombies.swf");
         });
     </script>
