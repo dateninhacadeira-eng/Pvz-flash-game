@@ -8,7 +8,12 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html {
             width: 100%; height: 100%;
-            background-color: #000;
+            background-color: #0f140d;
+            background-image: url('https://alphacoders.com');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             overflow: hidden;
             display: flex; justify-content: center; align-items: center;
         }
@@ -16,10 +21,15 @@
             width: 100vw; height: 100vh;
             max-width: 800px; max-height: 600px;
             aspect-ratio: 4 / 3;
+            border: 6px solid #4a3018;
+            border-radius: 12px;
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.8);
+            background-color: #000;
+            overflow: hidden;
         }
         ruffle-player { width: 100%; height: 100%; }
     </style>
-    <!-- Emulador via nuvem para evitar erros de permissão do GitHub -->
+    <!-- Carregador oficial estável do emulador pela nuvem -->
     <script src="https://unpkg.com"></script>
 </head>
 <body>
@@ -28,12 +38,23 @@
 
     <script>
         window.RufflePlayer = window.RufflePlayer || {};
+        window.RufflePlayer.config = {
+            "autoplay": "on",
+            "splashScreen": false,
+            "unmuteOverlay": "hidden",
+            // LIBERAÇÃO TÉCNICA: Permite que o SWF leia o arquivo de recursos na web
+            "allowScriptAccess": "always",
+            "parameters": {
+                "allowScriptAccess": "always"
+            }
+        };
+
         window.addEventListener("DOMContentLoaded", () => {
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
             document.getElementById("game-container").appendChild(player);
             
-            // CORRIGIDO: Nome idêntico ao do seu arquivo no repositório
+            // Inicia o seu arquivo oficial
             player.load("plants-vs-zombies.swf");
         });
     </script>
